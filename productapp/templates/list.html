@@ -1,0 +1,218 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<main class="page-wrapper">
+
+    <section class="welcome-card product-container">
+
+        <p class="eyebrow">
+            DJANGO CRUD
+        </p>
+
+
+        <h2>
+            Product List
+        </h2>
+
+
+        <p class="intro">
+            View and manage all registered products.
+        </p>
+
+
+        <div class="list-action">
+
+            <a href="{% url 'register' %}" class="button button-primary">
+                + Add Product
+            </a>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table class="product-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Product</th>
+
+                        <th>Category</th>
+
+                        <th>Brand</th>
+
+                        <th>Price</th>
+
+                        <th>Quantity</th>
+
+                        <th>Image</th>
+
+                        <th>Availability</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for product in products %}
+
+                    <tr>
+
+                        <!-- ID -->
+
+                        <td>
+                            {{ product.id }}
+                        </td>
+
+
+                        <!-- PRODUCT -->
+
+                        <td>
+
+                            <strong>
+                                {{ product.productName }}
+                            </strong>
+
+                        </td>
+
+
+                        <!-- CATEGORY -->
+
+                        <td>
+                            {{ product.category }}
+                        </td>
+
+
+                        <!-- BRAND -->
+
+                        <td>
+                            {{ product.brand }}
+                        </td>
+
+
+                        <!-- PRICE -->
+
+                        <td>
+                            ₹{{ product.price }}
+                        </td>
+
+
+                        <!-- QUANTITY -->
+
+                        <td>
+                            {{ product.quantity }}
+                        </td>
+
+
+                        <!-- IMAGE -->
+
+                        <td>
+
+                            {% if product.image %}
+
+                            <img src="{{ product.image.url }}" alt="{{ product.productName }}" width="60" height="60"
+                                style="
+                                    object-fit: cover;
+                                    border-radius: 10px;
+                                ">
+
+                            {% else %}
+
+                            <span>
+                                No Image
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- AVAILABILITY -->
+
+                        <td>
+
+                            {% if product.availability %}
+
+                            <span class="status-available">
+                                Available
+                            </span>
+
+                            {% else %}
+
+                            <span class="status-out">
+                                Out of Stock
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- ACTIONS -->
+
+                        <td class="actions-cell">
+
+                            <a href="{% url 'update' product.id %}" class="edit">
+                                Edit
+                            </a>
+
+
+                            <a href="{% url 'delete' product.id %}" class="delete">
+                                Delete
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="9" class="empty-message">
+                            No products available.
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <p class="form-footer">
+
+            <a href="{% url 'register' %}" class="back-link">
+                + Add Another Product
+            </a>
+
+        </p>
+
+
+        <p class="form-footer">
+
+            <a href="{% url 'index' %}" class="back-link">
+                ← Back to Home
+            </a>
+
+        </p>
+
+    </section>
+
+</main>
+
+{% endblock %}

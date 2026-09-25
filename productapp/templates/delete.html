@@ -1,0 +1,69 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<main class="page-wrapper">
+
+    <section class="container delete-container">
+
+        <p class="eyebrow">
+            PRODUCT MANAGEMENT
+        </p>
+
+
+        <h2>
+            Delete Product
+        </h2>
+
+
+        <p class="delete-intro">
+
+            Are you sure you want to delete
+
+            <strong>
+                {{ product.productName }}
+            </strong>?
+
+            <br>
+
+            <span>
+                This action cannot be undone.
+            </span>
+
+        </p>
+
+
+        <form
+            method="POST"
+            class="delete-actions"
+        >
+
+            {% csrf_token %}
+
+
+            <button
+                type="submit"
+                class="delete-confirm"
+            >
+                Delete Product
+            </button>
+
+        </form>
+
+
+        <p class="form-footer">
+
+            <a
+                href="{% url 'list' %}"
+                class="back-link"
+            >
+                ← Cancel & Go Back
+            </a>
+
+        </p>
+
+    </section>
+
+</main>
+
+{% endblock %}

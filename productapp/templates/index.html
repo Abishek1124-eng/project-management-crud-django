@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Product Management</title>
+
+    <link rel="stylesheet" href="{% static 'css/formstyle.css' %}">
+
+</head>
+
+
+<body>
+
+    <!-- =========================
+         VANTA BACKGROUND
+    ========================== -->
+
+    <div id="vanta-bg"></div>
+
+
+    <!-- =========================
+         PAGE CONTENT
+    ========================== -->
+
+    {% block content %}
+
+    <main class="page-wrapper">
+
+        <section class="container home-container">
+
+            <p class="eyebrow">
+                DJANGO PRODUCT MANAGEMENT
+            </p>
+
+
+            <h1>
+                Product Management
+            </h1>
+            
+
+
+            <p class="subtitle">
+
+                Register, update, view and manage your
+                products using a clean glassmorphism interface.
+
+            </p>
+
+
+            <div class="home-buttons">
+
+                <a href="{% url 'register' %}" class="button button-primary">
+                    + Register Product
+                </a>
+
+
+                <a href="{% url 'list' %}" class="button reset-btn">
+                    View Products
+                </a>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+
+                <div class="feature-card">
+
+                    <h3>
+                        Register
+                    </h3>
+
+                    <p>
+
+                        Add new products with complete
+                        product information.
+
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <h3>
+                        Update
+                    </h3>
+
+                    <p>
+
+                        Easily edit existing product
+                        information.
+
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card" >
+
+                    <h3>
+                        Manage
+                    </h3>
+
+                    <p>
+
+                        View, update and delete products
+                        from one place.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+    {% endblock %}
+
+
+    <!-- =========================
+         THREE.JS
+    ========================== -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js">
+    </script>
+
+
+    <!-- =========================
+         VANTA.NET
+    ========================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js">
+    </script>
+
+
+    <!-- =========================
+         VANTA SETTINGS
+    ========================== -->
+
+    <script>
+
+        window.addEventListener("load", function () {
+
+            if (typeof VANTA !== "undefined") {
+
+                VANTA.NET({
+
+                    el: "#vanta-bg",
+
+                    mouseControls: true,
+
+                    touchControls: true,
+
+                    gyroControls: false,
+
+                    minHeight: 500,
+
+                    minWidth: 500,
+
+                    scale: 1,
+
+                    scaleMobile: 1,
+
+                    color: 0x3f81ff,
+
+                    backgroundColor: 0x090d1f,
+
+                    points: 10,
+
+                    maxDistance: 20,
+
+                    spacing: 15,
+
+                    showDots: true
+
+                });
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
